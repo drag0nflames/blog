@@ -12,4 +12,11 @@ class Post extends Model
 		return $this->belongsTo('App\Category');
 
 	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function tags(){
+		return $this->belongsToMany('App\Tag');
+	}
 }
