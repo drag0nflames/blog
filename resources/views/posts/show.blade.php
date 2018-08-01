@@ -7,12 +7,20 @@
 		<div class="col-md-8">
 			<h1>{{ $post->title }}</h1>
 			<p class="lead">{{ $post->body }}</p>
+			<hr>
+			<div>
+				@foreach($post->tags as $tag)
+					<span class="badge badge-info">{{ $tag->name }}</span>
+				@endforeach
+			</div>
 		</div><!-- end of col-md-8-->
 		<div class="col-md-4">
 			<div class="card card-body bg-light">
 				<dl class="row">
 					<dt class="col-4">URL:</dt>
-					<dd class="col-8"><a href="{{ route('blog.single',$post->slug)}}">{{ route('blog.single',$post->slug) }}</a> </dd>
+					<dd class="col-8"><a
+								href="{{ route('blog.single',$post->slug)}}">{{ route('blog.single',$post->slug) }}</a>
+					</dd>
 				</dl>
 				<dl class="row">
 					<dt class="col-4">Category:</dt>
@@ -29,7 +37,7 @@
 				<hr>
 				<div class="row">
 					<div class="col-sm-6">
-						<a href="{{ route('posts.edit', [$post->id]) }}" class="btn btn-primary btn-block" >Edit</a>
+						<a href="{{ route('posts.edit', [$post->id]) }}" class="btn btn-primary btn-block">Edit</a>
 					</div>
 					<div class="col-sm-6">
 						<form method="post" action="{{route('posts.destroy', [$post->id])}}">

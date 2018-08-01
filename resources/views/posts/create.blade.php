@@ -2,6 +2,7 @@
 
 @section('stylesheets')
 	<link type="text/css" rel="stylesheet" href="{{ URL::asset('css/parsley.css') }}">
+	<link type="text/css" rel="stylesheet" href="{{ URL::asset('css/select2.css') }}">
 @endsection
 
 @section('title', '| Create New Post')
@@ -38,6 +39,15 @@
 				</div><!--end of form-group-->
 
 				<div class="form-group">
+					<label for="tags" class="font-weight-bold">Tags: </label>
+					<select class="form-control select2-selection--multiple" name="tags[]" multiple="multiple">
+						@foreach($tags as $tag)
+							<option value="{{ $tag->id }}">{{ $tag->name }}</option>
+						@endforeach
+					</select>
+				</div><!--end of form-group-->
+
+				<div class="form-group">
 					<label for="body" class="font-weight-bold">Body: </label>
 					<textarea rows="6" id="body" name="body" class="form-control" required
 							  placeholder=" Enter The Body Of Blog">{{ old('body') }}</textarea>
@@ -53,4 +63,8 @@
 
 @section('scripts')
 	<script type="text/javascript" src="{{ URL::asset('js/parsley.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/select2.full.js') }}"></script>
+	<script type="text/javascript">
+		$('.select2-selection--multiple').select2();
+	</script>
 @endsection
