@@ -49,7 +49,24 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		//validate the data
+		$validator = Validator::make($request->all(), [
+			'name' => 'required|max:255',
+		]);
+
+		if ($validator->fails()) {
+			return redirect(route('categories.index'))
+				->withErrors($validator)
+				->withInput();
+		}
+
+		$tag = new Tag();
+		$tag -> name = $request->name;
+		$tag->save();
+
+		Session::flash('success','New tag was successfully added!');
+
+		return redirect()->route('tags.index');
     }
 
     /**
