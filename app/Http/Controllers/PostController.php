@@ -5,6 +5,7 @@
 	use App\Category;
 	use Illuminate\Support\Facades\Validator;
 	use Session;
+	use App\Tag;
 	use Illuminate\Http\Request;
 	use App\Post;
 
@@ -44,7 +45,8 @@
 		public function create()
 		{
 			$categories = Category::all();
-			return view('posts.create')->with('categories', $categories);
+			$tags = Tag::all();
+			return view('posts.create')->with('categories', $categories)->with('tags', $tags);
 		}
 
 		/**
@@ -80,6 +82,8 @@
 
 			$post->save();
 
+			$post->tags()->sync($request->tags, false);
+
 			Session::flash('success', 'The blog post was successfully saved!');
 
 
@@ -107,13 +111,14 @@
 		 */
 		public function edit($id)
 		{
+			$tags = Tag::all();
 			$categories = Category::all();
 
 			//find post in the database and save it as a variable//
 			$post = Post::find($id);
 
 			//return view and pass the variable obtained previously
-			return view('posts.edit')->with('post', $post)->with('categories', $categories);
+			return view('posts.edit')->with('post', $post)->with('categories', $categories)->with('tags', $tags);
 
 		}
 
@@ -160,6 +165,8 @@
 			$post->category_id = $request->input('category_id');
 
 			$post->save();
+
+			$post->tags()->sync($request->tags);
 
 			//set the flash data with success message
 			Session::flash('success', 'This post was successfully updated');
