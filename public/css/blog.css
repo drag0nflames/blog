@@ -1,0 +1,34 @@
+/*
+My Custom CSS
+=============
+Author:  Bikey Bhujel
+*/
+
+/* --------------------------------------
+   header
+   -------------------------------------- */
+.header-style{
+    margin-bottom: 25px;
+}
+
+.container dt,.container dd {
+    width:auto;
+    margin-left:auto;
+    display:inline-block;
+}
+
+.button-style{
+    margin-top:7px;
+}
+
+.index-style{
+    margin-bottom: 18px;
+}
+
+.post{
+    margin-bottom: 35px;
+}
+
+.collapsed-button{
+
+}
