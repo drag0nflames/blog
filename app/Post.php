@@ -19,4 +19,11 @@ class Post extends Model
 	public function tags(){
 		return $this->belongsToMany('App\Tag');
 	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function comments(){
+		return $this->belongsToMany('App\Comment');
+	}
 }
