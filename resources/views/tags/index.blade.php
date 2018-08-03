@@ -10,7 +10,9 @@
 				<thead>
 				<tr>
 					<th>#</th>
-					<th>Name</th>
+					<th>Name
+					<th></th>
+					<th></th>
 				</tr>
 				</thead>
 				<tbody>
@@ -18,6 +20,9 @@
 					<tr>
 						<td>{{ $tag->id }}</td>
 						<td>{{ $tag->name}}</td>
+						<td></td>
+						<td><a href="{{ route('tags.show', [$tag->id]) }}" class="btn btn-outline-info">View</a>
+							<a href="{{ route('tags.edit', [$tag->id]) }}" class="btn btn-outline-info">Edit</a></td>
 					</tr>
 				@endforeach
 				</tbody>
