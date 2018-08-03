@@ -70,7 +70,8 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        //
+        $tag = Tag::find($id);
+        return view('tags.show')->with('tag', $tag);
     }
 
     /**
@@ -81,7 +82,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tag = Tag::find($id);
+        return view('tags.edit')->with('tag', $tag);
     }
 
     /**
@@ -93,8 +95,31 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+		//validate the data
+		$validator = Validator::make($request->all(), [
+			'name' => 'required|max:255',
+		]);
+
+		if ($validator->fails()) {
+			return redirect(route('posts.edit'))
+				->withErrors($validator)
+				->withInput();
+		}
+
+		//save the data to database
+		$tag = Tag::find($id);
+
+		$tag->name = $request->input('name');
+
+		$tag->save();
+
+		//set the flash data with success message
+		Session::flash('success', 'This tag was successfully updated');
+
+		//redirect with the flash data to the  show request//
+		return redirect()->route('tags.show', $tag->id);
+
+	}
 
     /**
      * Remove the specified resource from storage.
@@ -104,6 +129,15 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+		$tag = Tag::find($id);
+
+		$tag->posts()->detach();
+
+		$tag->delete();
+
+		Session::flash('success', 'The tag was successfully deleted');
+
+		return redirect()->route('tags.index');
+
+	}
 }
