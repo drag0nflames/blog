@@ -37,6 +37,10 @@
 		//Tag Route
 		Route::resource('tags', 'TagController')->except('create');
 
+		//comment controller
+		Route::post('comments/{post_id}', 'CommentsController@store')->name('comments.store');
+
+
 		Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
 
 
