@@ -34,7 +34,7 @@
 		</div><!-- end of col-md-8-->
 
 		<div class="col-md-4 md-offset-1">
-			<h3>Sidebar</h3>
+			<h3 class="text-center">Sidebar</h3>
 		</div>
 	</div><!-- end of row-->
 @endsection
