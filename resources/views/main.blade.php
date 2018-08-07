@@ -9,7 +9,7 @@
 <div class="container">
 	@include('partials._messages')
 
-	{{ Auth::check() ? "Logged In" : "Logged Out" }}
+	<!--{{ Auth::check() ? "Logged In" : "Logged Out" }}-->
 
 	@yield('content')
 
