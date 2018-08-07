@@ -5,22 +5,61 @@ Author:  Bikey Bhujel
 */
 
 /* --------------------------------------
+   body
+   -------------------------------------- */
+body {
+    font-family: 'Raleway', sans-serif;
+    color: #777;
+
+    background: #fcfcfc  url("../img/body-bg.png");
+}
+
+
+/* --------------------------------------
    header
    -------------------------------------- */
+header .navbar-default, .post-item, .widget, .post-author, .post-comments {
+    background: #fff;
+}
+
+
 .header-style{
     margin-bottom: 25px;
 }
 
+.jumbotron{
+    margin-top: 25px;
+}
+
+/* --------------------------------------
+   footer
+   -------------------------------------- */
+   .footer-style{
+    font-size: 13px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+
+/* --------------------------------------
+   container
+   -------------------------------------- */
 .container dt,.container dd {
     width:auto;
     margin-left:auto;
     display:inline-block;
 }
 
+/* --------------------------------------
+   button
+   -------------------------------------- */
 .button-style{
     margin-top:7px;
 }
 
+/* --------------------------------------
+   other
+   -------------------------------------- */
 .index-style{
     margin-bottom: 18px;
 }
@@ -29,10 +68,125 @@ Author:  Bikey Bhujel
     margin-bottom: 35px;
 }
 
-.collapsed-button{
 
-}
 
 .comment-section{
     margin-top: 30px;
 }
+
+.post-item-body, .post-author, .post-comments{
+    margin: 10px;
+    border: 1px solid #e7e7e7;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
+    /*border: 1px solid #e7e7e7;*/
+}
+
+.post-item-body h2, .post-item-body h1 {
+    /*font-weight: bold;
+    letter-spacing: 1px;*/
+    font-size: 35px;
+    line-height: 120%;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin: 10px;
+}
+
+.post-item-body .post-meta {
+    margin: 10px;
+    border-top: 1px solid #e7e7e7;
+    overflow: hidden;
+    /*background: #fcfcfc;*/
+}
+
+.post-meta.no-border {
+    border-top: none;
+    padding: 15px 0 30px;
+}
+
+.post-item-body .post-meta a {
+    color: #999;
+}
+
+.post-item-body .post-meta a:hover {
+    color: #6b6a6a;
+}
+
+ul.post-meta-group {
+    float: left;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.post-meta-group li {
+    /*border-right: 1px dotted #e9e9e9;*/
+    float: left;
+    /*list-style: outside none none;*/
+    margin: 0 10px 0 0;
+    padding: 0 10px 0 0;
+}
+
+.padding-10 {
+    padding: 20px;
+}
+
+.post-author, .post-comments {
+    margin-bottom: 20px;
+}
+
+.post-author {
+    font-size: 13px;
+    /*background: rgba(0, 0, 0, 0.02) none repeat scroll 0 0;*/
+}
+
+.post-author h4 {
+    font-weight: 600;
+}
+
+.media img {
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+.post-item.post-detail, .post-author, .post-comments {
+    margin-bottom: 20px;
+}
+
+.post-comments {
+    padding-top: 10px;
+}
+.post-comments h3 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+ul.comments-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.comments-list-children {
+    font-size: 0.9em;
+    list-style: outside none none;
+    padding: 0;
+}
+
+li.comment-item {
+    background: rgba(0, 0, 0, 0.02) none repeat scroll 0 0;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    margin: 15px 0;
+    padding: 10px 20px;
+}
+
+li.comment-item:first-child {
+    margin-top: 0;
+}
+
+.comment-heading {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
