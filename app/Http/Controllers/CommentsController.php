@@ -40,6 +40,7 @@ class CommentsController extends Controller
     {
 		$post = Post::find($post_id);
 
+
 		//validate the data
 		$validator = Validator::make($request->all(), [
 			'name' => 'required|max:255',
@@ -53,8 +54,6 @@ class CommentsController extends Controller
 				->withErrors($validator)
 				->withInput();
 		}
-
-		$post = Post::find($post_id);
 
 		$comment = new Comment();
 		$comment->name = $request->name;
