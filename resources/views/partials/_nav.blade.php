@@ -12,13 +12,13 @@
 				<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item {{ Request::is('blog') ? "active" : "" }}">
-				<a class="nav-link" href="blog">Blog <span class="sr-only">(current)</span></a>
+				<a class="nav-link" href="{{url('blog')}}">Blog <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item {{ Request::is('about') ? "active" : "" }}">
-				<a class="nav-link" href="about">About</a>
+				<a class="nav-link" href="{{url('about')}}">About</a>
 			</li>
 			<li class="nav-item {{ Request::is('contact') ? "active" : "" }}">
-				<a class="nav-link" href="contact">Contact</a>
+				<a class="nav-link" href="{{url('contact')}}">Contact</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link disabled" href="#">Disabled</a>
