@@ -59,7 +59,7 @@
 		{
 			//validate the data
 			$validator = Validator::make($request->all(), [
-				'title' => 'required|max:255',
+				'title' => 'required|unique:posts,title|max:255',
 				'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
 				'body' => 'required',
 				'category_id' => 'required|integer'
@@ -134,15 +134,14 @@
 			//validate the data
 
 			$post = Post::find($id);
-			if ($request->input('slug') == $post->slug) {
+			if ($request->input('slug') == $post->slug || $request->input('title') == $post->title) {
 				$validator = Validator::make($request->all(), [
-					'title' => 'required|max:255',
 					'category_id' => 'required|integer',
 					'body' => 'required',
 				]);
 			} else {
 				$validator = Validator::make($request->all(), [
-					'title' => 'required|max:255',
+					'title' => 'required|unique:posts,title|max:255',
 					'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
 					'category_id' => 'required|integer',
 					'body' => 'required',
