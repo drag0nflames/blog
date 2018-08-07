@@ -21,9 +21,9 @@ class Post extends Model
 	}
 
 	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function comments(){
-		return $this->belongsToMany('App\Comment');
+		return $this->hasMany('App\Comment');
 	}
 }
