@@ -24,7 +24,8 @@
                 aliqua dolor amet occaecat tempor quis duis enim in sint sed fugiat dolor qui mollit aliqua culpa anim
                 consequat officia pariatur ut cupidatat velit ut occaecat occaecat esse ex dolore duis laborum eu elit
                 eu officia consectetur consectetur dolor dolore voluptate reprehenderit in laborum officia ex do
-                incididunt incididunt eu in dolor sit sit eu quis./p>
+                incididunt incididunt eu in dolor sit sit eu quis.
+            </p>
         </div><!--end of col-md-12-->
     </div><!--end of row-->
 @endsection

@@ -61,22 +61,30 @@ header .navbar-default, .post-item, .widget, .post-author, .post-comments {
     margin-bottom: 18px;
 }
 
+.index-header h1{
+    font-family: 'Lora', serif;
+    font-style: oblique;
+    text-align: center;
+    font-weight: bolder;
+}
 .post {
+    padding-bottom: 25px;
     margin-bottom: 35px;
+    border-bottom: 1px solid #e7e7e7;
 }
 
 /* --------------------------------------
     Blog post single
    -------------------------------------- */
 .post-item, .post-detail, .post-author, .post-comments {
+    margin-top: 25px;
     margin-bottom: 20px;
 }
 
-.post-item-body, .post-author, .post-comments {
+.post-item-body, .post-author, .post-comments, .popular-posts {
     margin: 10px;
     border: 1px solid #e7e7e7;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
-    /*border: 1px solid #e7e7e7;*/
 }
 
 .post-item-body h2, .post-item-body h1 {
@@ -88,6 +96,12 @@ header .navbar-default, .post-item, .widget, .post-author, .post-comments {
     letter-spacing: -1px;
     margin: 10px;
 }
+
+.post-item-body h5 {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
 
 .post-item-body .post-meta {
     margin: 10px;
@@ -138,6 +152,17 @@ ul.post-meta-group li {
     margin-bottom: 10px;
     margin-top: 10px;
 }
+
+.popular-posts h1 {
+    font-family: 'Lora', serif;
+    font-style: oblique;
+    text-align: center;
+    font-weight: bolder;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
 
 /* --------------------------------------
     Post Author Blog Single

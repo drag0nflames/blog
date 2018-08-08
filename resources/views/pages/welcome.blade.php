@@ -60,20 +60,28 @@
 				<hr class="my-4">
 				<p>It uses utility classes for typography and spacing to space content out within the larger
 					container.</p>
-				<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+				<a class="btn btn-primary btn-lg" href="{{url('about')}}" role="button">Learn more</a>
 			</div><!-- end of jumbotron-->
 		</div><!-- end of col-md-12-->
 	</div><!-- end of row-->
 
 	<div class="row">
 		<div class="col-md-8">
-			@foreach($posts as $post)
-				<div class="post">
-					<h3>{{ $post->title }}</h3>
-					<p class="lead">{{ substr($post->body, 0, 300 )}}{{ strlen($post->body) >300 ? "..." : "" }}</p>
-					<a href="{{ route('blog.single',$post->slug) }}" class="btn btn-primary">Read More</a>
+			<article class="popular-posts post-detail post-item">
+				<h1>Popular Posts</h1>
+				<div>
+					<?php $count=0; ?>
+					@foreach($posts as $post)
+						<?php if($count == 3) break; ?>
+						<div class="post post-item-body padding-10">
+							<h2>{{ $post->title }}</h2>
+							<p>{{ substr($post->body, 0, 300 )}}{{ strlen($post->body) >300 ? "..." : "" }}</p>
+							<a href="{{ route('blog.single',$post->slug) }}" class="btn btn-primary">Read More</a>
+						<?php $count++; ?>
+						</div>
+					@endforeach
 				</div>
-			@endforeach
+			</article>
 		</div><!-- end of col-md-8-->
 
 		<div class="col-md-4 md-offset-1">
