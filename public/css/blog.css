@@ -11,9 +11,8 @@ body {
     font-family: 'Raleway', sans-serif;
     color: #777;
 
-    background: #fcfcfc  url("../img/body-bg.png");
+    background: #fcfcfc url("../img/body-bg.png");
 }
-
 
 /* --------------------------------------
    header
@@ -22,59 +21,58 @@ header .navbar-default, .post-item, .widget, .post-author, .post-comments {
     background: #fff;
 }
 
-
-.header-style{
+.header-style {
     margin-bottom: 25px;
 }
 
-.jumbotron{
+.jumbotron {
     margin-top: 25px;
 }
 
 /* --------------------------------------
    footer
    -------------------------------------- */
-   .footer-style{
+.footer-style {
     font-size: 13px;
     padding: 20px;
     margin-top: 20px;
 }
 
-
 /* --------------------------------------
    container
    -------------------------------------- */
-.container dt,.container dd {
-    width:auto;
-    margin-left:auto;
-    display:inline-block;
+.container dt, .container dd {
+    width: auto;
+    margin-left: auto;
+    display: inline-block;
 }
 
 /* --------------------------------------
    button
    -------------------------------------- */
-.button-style{
-    margin-top:7px;
+.button-style {
+    margin-top: 7px;
 }
 
 /* --------------------------------------
    other
    -------------------------------------- */
-.index-style{
+.index-style {
     margin-bottom: 18px;
 }
 
-.post{
+.post {
     margin-bottom: 35px;
 }
 
-
-
-.comment-section{
-    margin-top: 30px;
+/* --------------------------------------
+    Blog post single
+   -------------------------------------- */
+.post-item, .post-detail, .post-author, .post-comments {
+    margin-bottom: 20px;
 }
 
-.post-item-body, .post-author, .post-comments{
+.post-item-body, .post-author, .post-comments {
     margin: 10px;
     border: 1px solid #e7e7e7;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
@@ -96,11 +94,6 @@ header .navbar-default, .post-item, .widget, .post-author, .post-comments {
     border-top: 1px solid #e7e7e7;
     overflow: hidden;
     /*background: #fcfcfc;*/
-}
-
-.post-meta.no-border {
-    border-top: none;
-    padding: 15px 0 30px;
 }
 
 .post-item-body .post-meta a {
@@ -130,6 +123,25 @@ ul.post-meta-group li {
     padding: 20px;
 }
 
+.post-meta.no-border {
+    border-top: none;
+    padding: 15px 0 30px;
+}
+
+.post-comments {
+    padding-top: 10px;
+}
+
+.post-comments h3 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* --------------------------------------
+    Post Author Blog Single
+   -------------------------------------- */
 .post-author, .post-comments {
     margin-bottom: 20px;
 }
@@ -139,7 +151,7 @@ ul.post-meta-group li {
     /*background: rgba(0, 0, 0, 0.02) none repeat scroll 0 0;*/
 }
 
-.post-author h4 {
+.post-author h4 h2 {
     font-weight: 600;
 }
 
@@ -148,29 +160,12 @@ ul.post-meta-group li {
     margin-right: 10px;
 }
 
-.post-item.post-detail, .post-author, .post-comments {
-    margin-bottom: 20px;
-}
-
-.post-comments {
-    padding-top: 10px;
-}
-.post-comments h3 {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
+/* --------------------------------------
+   Comment Section Blog Single
+   -------------------------------------- */
 ul.comments-list {
     list-style: none;
     margin: 0;
-    padding: 0;
-}
-
-ul.comments-list-children {
-    font-size: 0.9em;
-    list-style: outside none none;
     padding: 0;
 }
 
@@ -181,12 +176,16 @@ li.comment-item {
     padding: 10px 20px;
 }
 
-li.comment-item:first-child {
-    margin-top: 0;
-}
-
 .comment-heading {
     margin-bottom: 10px;
     border-bottom: 1px solid #e7e7e7;
 }
+
+.comment-section {
+    margin-top: 30px;
+}
+
+
+
+
 
