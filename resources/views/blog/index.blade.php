@@ -14,9 +14,9 @@
 				@foreach($posts as $post)
 					<div class="post post-item-body padding-10 post-item">
 						<div class="col-md-12">
-							<h2>{{ $post->title }}</h2>
+							<h2>{{$post->title }}</h2>
 							<h5>Published: {{ date('M j, Y h:iA', strtotime($post->created_at)) }}</h5>
-							<p>{{ substr($post->body, 0, 500 )}}{{ strlen($post->body) >500 ? "..." : "" }}</p>
+							<p>{{substr($post->body, 0, 500 )}}{{ strlen($post->body) >500 ? "..." : "" }}</p>
 							<a href="{{ route('blog.single', $post->slug) }}" class="btn btn-primary">Read More</a>
 						</div><!-- end of col-md-12-->
 					</div><!-- end of row-->

@@ -66,6 +66,7 @@ header .navbar-default, .post-item, .widget, .post-author, .post-comments {
     font-style: oblique;
     text-align: center;
     font-weight: bolder;
+    color: #1e7e34;
 }
 .post {
     padding-bottom: 25px;
