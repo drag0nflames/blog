@@ -89,13 +89,10 @@ header .navbar-default, .post-item, .widget, .post-author, .post-comments {
 }
 
 .post-item-body h2, .post-item-body h1 {
-    /*font-weight: bold;
-    letter-spacing: 1px;*/
     font-size: 35px;
     line-height: 120%;
     font-weight: 700;
     letter-spacing: -1px;
-    margin: 10px;
 }
 
 .post-item-body h5 {
@@ -211,7 +208,43 @@ li.comment-item {
     margin-top: 30px;
 }
 
+#backend-comments{
+    margin-top: 25px;
+}
 
+#backend-comments h3{
+    font-weight: bold;
+}
+
+
+/* --------------------------------------
+   Image Preview
+   -------------------------------------- */
+.btn-file {
+    position: relative;
+    margin-right: 10px;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#img-upload{
+    margin-top: 10px;
+    width: 100%;
+}
 
 
 
