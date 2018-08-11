@@ -13,7 +13,7 @@
 		 */
 		public function getIndex(){
 			//fetch all the posts from database
-			$posts = Post::paginate(10);
+			$posts = Post::paginate(3);
 
 			//return to the view and pass the data
 			return view('blog.index')->with('posts', $posts);

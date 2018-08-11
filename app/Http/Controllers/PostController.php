@@ -9,6 +9,8 @@
 	use Illuminate\Http\Request;
 	use App\Post;
 	use Purifier;
+	use Image;
+	use Storage;
 
 	class PostController extends Controller
 	{
@@ -78,8 +80,18 @@
 
 			$post->title = $request->title;
 			$post->slug = $request->slug;
-			$post->body =  Purifier::clean($request->body);
+			$post->body = Purifier::clean($request->body);
 			$post->category_id = $request->category_id;
+
+			//save our image
+			if ($request->hasFile('featured_image')) {
+				$image = $request->file('featured_image');
+				$filename = time() . '.' . $image->getClientOriginalExtension();
+				$location = public_path('images/' . $filename);
+				Image::make($image)->save($location);
+
+				$post->image = $filename;
+			}
 
 			$post->save();
 
@@ -135,15 +147,18 @@
 			//validate the data
 
 			$post = Post::find($id);
+
 			if ($request->input('slug') == $post->slug || $request->input('title') == $post->title) {
 				$validator = Validator::make($request->all(), [
 					'category_id' => 'required|integer',
+					'featured_image' => 'image',
 					'body' => 'required',
 				]);
 			} else {
 				$validator = Validator::make($request->all(), [
 					'title' => 'required|unique:posts,title|max:255',
 					'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+					'featured_image' => 'image',
 					'category_id' => 'required|integer',
 					'body' => 'required',
 				]);
@@ -163,6 +178,21 @@
 			$post->slug = $request->input('slug');
 			$post->body = Purifier::clean($request->input('body'));
 			$post->category_id = $request->input('category_id');
+
+			if ($request->hasFile('featured_image')) {
+				//add the new photo
+				$image = $request->file('featured_image');
+				$filename = time() . '.' . $image->getClientOriginalExtension();
+				$location = public_path('images/' . $filename);
+				Image::make($image)->save($location);
+				$oldFileName = $post->image;
+
+				//update the database to reflect the new photo
+				$post->image = $filename;
+
+				//delete the old photo
+				Storage::delete($oldFileName);
+			}
 
 			$post->save();
 
@@ -187,6 +217,8 @@
 
 			$post->tags()->detach();
 
+			Storage::delete($post->image);
+			
 			$post->delete();
 
 			Session::flash('success', 'The post was successfully deleted');
