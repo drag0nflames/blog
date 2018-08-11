@@ -22,7 +22,7 @@
 							<li><i class="fa fa-comments"></i><a href="#comment_id"> {{ $post->comments->count() }} Comments</a></li>
 						</ul>
 					</div>
-					<p clas="lead">{{ $post->body }}</p>
+					<p clas="lead">{!! $post->body  !!}</p>
 					<p> Posted In: {{ $post->category->name }}</p>
 				</div>
 			</article><!-- end of article-->
