@@ -6,12 +6,46 @@
 	<div class="row">
 		<div class="col-md-8">
 			<h1>{{ $post->title }}</h1>
-			<p class="lead">{{ $post->body }}</p>
+			<p class="lead">{!! $post->body; !!}</p>
 			<hr>
 			<div>
 				@foreach($post->tags as $tag)
 					<span class="badge badge-info">{{ $tag->name }}</span>
 				@endforeach
+			</div>
+
+			<div id="backend-comments">
+				<h3>Comments
+					<small>total {{ $post->comments()->count() }} </small>
+				</h3>
+				<table class="table">
+					<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Comment</th>
+						<th></th>
+					</tr>
+					</thead>
+					<tbody>
+					@foreach($post->comments as $comment)
+						<tr>
+							<td>{{$comment->name}}</td>
+							<td>{{$comment->email}}</td>
+							<td>{{$comment->comment}}</td>
+							<td>
+								<form method="post" action="{{ route('comments.destroy', [$comment->id]) }}">
+									{{ csrf_field() }}
+									{{ method_field("DELETE") }}
+									<input class="btn btn-block btn-danger mx-auto" type="submit" value="Delete" style="margin: 10px">
+								</form><!-- end of form-->
+								<a href="{{route('comments.edit', [$comment->id])}}"  class="btn btn-block btn-primary">Edit</a>
+							</td>
+						</tr>
+					@endforeach
+					</tbody>
+				</table>
+
 			</div>
 		</div><!-- end of col-md-8-->
 		<div class="col-md-4">
