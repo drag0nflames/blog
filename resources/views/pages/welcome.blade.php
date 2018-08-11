@@ -4,6 +4,11 @@
 
 @section('content')
 	<div class="row">
+		@if(session('status'))
+			<div class="alert alert-success">
+				{{ session('status') }}
+			</div>
+		@endif
 		<div class="col-md-12">
 			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 				<ol class="carousel-indicators">
@@ -48,11 +53,6 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			@if(session('status'))
-				<div class="alert alert-success">
-					{{ session('status') }}
-				</div>
-			@endif
 			<div class="jumbotron">
 				<h1 class="display-4">Welcome to my blog</h1>
 				<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
@@ -75,7 +75,7 @@
 						<?php if($count == 3) break; ?>
 						<div class="post post-item-body padding-10">
 							<h2>{{ $post->title }}</h2>
-							<p>{{ substr($post->body, 0, 300 )}}{{ strlen($post->body) >300 ? "..." : "" }}</p>
+							<p>{!! substr($post->body, 0, 300 )!!}{{ strlen($post->body) >300 ? "..." : "" }}</p>
 							<a href="{{ route('blog.single',$post->slug) }}" class="btn btn-primary">Read More</a>
 						<?php $count++; ?>
 						</div>
