@@ -3,6 +3,13 @@
 @section('stylesheets')
 	<link type="text/css" rel="stylesheet" href="{{ URL::asset('css/parsley.css') }}">
 	<link type="text/css" rel="stylesheet" href="{{ URL::asset('css/select2.css') }}">
+	<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+	<script>
+        tinymce.init({
+            selector:'textarea',
+            plugins: "link code",
+        });
+	</script>
 @endsection
 
 @section('title','| Edit post')
@@ -10,17 +17,17 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-8">
-			<form method="POST" action="{{ route('posts.update', [$post->id]) }}">
+			<form method="POST" action={{ route('posts.update', [$post->id]) }} data-parsley-validate>
 				{{ csrf_field() }}
 				{{ method_field("PUT") }}
 				<div class="form-group">
 					<label for="title" class="font-weight-bold">Title:</label>
-					<input id="title" name="title" class="form-control" value="{{ $post->title }}">
+					<input id="title" name="title" class="form-control" value="{{ $post->title }}" required>
 				</div><!-- end of form-group-->
 
 				<div class="form-group">
 					<label for="slug" class="font-weight-bold">Slug:</label>
-					<input id="slug" name="slug" class="form-control" value="{{ $post->slug }}">
+					<input id="slug" name="slug" class="form-control" value="{{ $post->slug }}" required>
 					<small id="slugHelp" class="form-text text-muted">Slug is user-friendly URL which other users will
 						see when they view ur posts
 					</small>
@@ -28,7 +35,7 @@
 
 				<div class="form-group">
 					<label for="category" class="font-weight-bold">Category: </label>
-					<select class="form-control" id="category_id" name="category_id">
+					<select class="form-control" id="category_id" name="category_id" required>
 						@foreach($categories as $category)
 							@if($category->id == $post->category_id)
 								<option value="{{ $category->id}}" selected>{{ $category->name }}</option>';
@@ -41,7 +48,7 @@
 
 				<div class="form-group">
 					<label for="tags" class="font-weight-bold">Tags: </label>
-					<select class="form-control select2-selection--multiple" name="tags[]" multiple="multiple">
+					<select class="form-control select2-selection--multiple" name="tags[]" multiple="multiple" required>
 						@foreach($tags as $tag)
 							<option value="{{ $tag->id }}">{{ $tag->name }}</option>
 						@endforeach
@@ -51,7 +58,7 @@
 
 				<div class="form-group">
 					<label for="body" class="font-weight-bold">Body:</label>
-					<textarea rows="6" id="body" name="body" class="form-control">{{$post->body}}</textarea>
+					<textarea rows="6" id="body" name="body" class="form-control" required>{{$post->body}}</textarea>
 				</div><!-- end of form-group-->
 
 				<input type="submit" value="Save Changes" class="btn btn-success text-center">
