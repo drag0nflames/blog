@@ -8,6 +8,7 @@
 	use App\Tag;
 	use Illuminate\Http\Request;
 	use App\Post;
+	use Purifier;
 
 	class PostController extends Controller
 	{
@@ -77,7 +78,7 @@
 
 			$post->title = $request->title;
 			$post->slug = $request->slug;
-			$post->body = $request->body;
+			$post->body =  Purifier::clean($request->body);
 			$post->category_id = $request->category_id;
 
 			$post->save();
@@ -160,7 +161,7 @@
 
 			$post->title = $request->input('title');
 			$post->slug = $request->input('slug');
-			$post->body = $request->input('body');
+			$post->body = Purifier::clean($request->input('body'));
 			$post->category_id = $request->input('category_id');
 
 			$post->save();
