@@ -55,8 +55,6 @@
 				</div><!--end of form-group-->
 
 				<div class="form-group">
-					{{--<label for="featured_image" class="font-weight-bold">Featured Image: </label>--}}
-					{{--<input type="file" name="featured_image" class="form-control">--}}
 					<label for="featured_image" class="font-weight-bold">Featured Image: </label>
 					<div class="input-group">
             			<span class="input-group-btn">

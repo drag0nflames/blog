@@ -17,7 +17,7 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-8">
-			<form method="POST" action={{ route('posts.update', [$post->id]) }} data-parsley-validate>
+			<form method="POST" action={{ route('posts.update', [$post->id]) }} data-parsley-validate enctype="multipart/form-data" files="true">
 				{{ csrf_field() }}
 				{{ method_field("PUT") }}
 				<div class="form-group">
@@ -55,6 +55,18 @@
 					</select>
 				</div><!--end of form-group-->
 
+				<div class="form-group">
+					<label for="featured_image" class="font-weight-bold">Update Featured Image: </label>
+					<div class="input-group">
+            			<span class="input-group-btn">
+               				 <span class="btn btn-primary btn-file">
+                   		 		Browse… <input type="file" name="featured_image" id="featured_image" >
+                			</span>
+						</span>
+						<input type="text" class="form-control" readonly>
+					</div>
+					<img id='img-upload'/>
+				</div>
 
 				<div class="form-group">
 					<label for="body" class="font-weight-bold">Body:</label>
@@ -93,5 +105,42 @@
 	<script type="text/javascript">
         $('.select2-selection--multiple').select2();
         $('.select2-selection--multiple').select2().val({{ json_encode($post->tags()->allRelatedIds()) }}).trigger('change');
+	</script>
+	<script type="text/javascript">
+        $(document).ready( function() {
+            $(document).on('change', '.btn-file :file', function() {
+                var input = $(this),
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [label]);
+            });
+
+            $('.btn-file :file').on('fileselect', function(event, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = label;
+
+                if( input.length ) {
+                    input.val(log);
+                } else {
+                    if( log ) alert(log);
+                }
+
+            });
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#img-upload').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#featured_image").change(function(){
+                readURL(this);
+            });
+        });
 	</script>
 @endsection

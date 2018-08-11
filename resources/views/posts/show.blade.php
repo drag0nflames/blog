@@ -5,14 +5,17 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-8">
-			<h1>{{ $post->title }}</h1>
+			<img src="{{asset('images/'.$post->image)}}" height="400" width="800" class="img-fluid" alt="Responsive image">
+			<h1 class="font-weight-bold" style="margin-top: 10px">{{ $post->title }}</h1>
 			<p class="lead">{!! $post->body; !!}</p>
 			<hr>
 			<div>
+				<h4>Tags: </h4>
 				@foreach($post->tags as $tag)
 					<span class="badge badge-info">{{ $tag->name }}</span>
 				@endforeach
 			</div>
+			<hr>
 
 			<div id="backend-comments">
 				<h3>Comments
