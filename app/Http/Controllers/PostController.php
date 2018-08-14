@@ -11,6 +11,8 @@
 	use Purifier;
 	use Image;
 	use Storage;
+	use Auth;
+	use App\User;
 
 	class PostController extends Controller
 	{
@@ -33,8 +35,11 @@
 		 */
 		public function index()
 		{
-			//create a variable and stores all the blogposts in it from database
-			$posts = Post::orderBy('id', 'desc')->paginate(10);
+			$user_id = Auth::user()->id;
+
+			//create a variable and stores all the posts in it from database
+			$posts = Post::orderBy('id', 'desc')->where('user_id', $user_id)->paginate(10);
+
 
 			//return a view and pass in above variable basically
 			return view('posts.index')->with('posts', $posts);
@@ -82,6 +87,7 @@
 			$post->slug = $request->slug;
 			$post->body = Purifier::clean($request->body);
 			$post->category_id = $request->category_id;
+			$post->user_id = Auth::user()->id;
 
 			//save our image
 			if ($request->hasFile('featured_image')) {
@@ -218,7 +224,7 @@
 			$post->tags()->detach();
 
 			Storage::delete($post->image);
-			
+
 			$post->delete();
 
 			Session::flash('success', 'The post was successfully deleted');

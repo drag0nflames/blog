@@ -7,6 +7,7 @@
 		<div class="col-md-8">
 			<article class="post-detail post-item">
 				<div class="post-item-body padding-10">
+					<img src="{{asset('images/'.$post->image)}}" height="400" width="800" class="img-fluid post-image" alt="Responsive image">
 					<h1>{{ $post->title }}</h1>
 					<div class="post-meta no-border">
 						<ul class="post-meta-group">
@@ -19,7 +20,7 @@
 									<span class="badge badge-secondary">{{ $tag->name }}</span>
 								@endforeach
 							</li>
-							<li><i class="fa fa-comments"></i><a href="#comment_id"> {{ $post->comments->count() }} Comments</a></li>
+							<li><i class="fa fa-comments"></i><a href="#comment_id"> {{ $post->comments->count() }} {{ count($post->comments) >1  ? "comments" : "comment" }}</a></li>
 						</ul>
 					</div>
 					<p clas="lead">{!! $post->body  !!}</p>
@@ -38,11 +39,13 @@
 					</div>
 					<div class="media-body">
 						<h2 class="font-weight-bold">Author:</h2>
-						<h4 class="media-heading"><a href="#">Masaru Edo</a></h4>
+						<h4 class="media-heading"><a href="#">
+							{{$user->name}}
+						</a></h4>
 						<div class="post-author-count">
 							<a href="#">
 								<i class="fa fa-clone"></i>
-								90 posts
+								{{$user->posts->count()}} {{ count($user->posts) >1  ? "posts" : "post" }}
 							</a>
 						</div>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ad aut sunt cum, mollitia
@@ -105,5 +108,46 @@
 				</div>
 			</div>
 		</div><!--end of col-md-8-->
+
+		<div class="col-md-4">
+			<aside class="right-sidebar">
+				<div class="search-widget">
+					<div class="input-group">
+						<input type="text" class="form-control input-lg" placeholder="Search for...">
+						<span class="input-group-btn">
+                            <button class="btn btn-lg btn-default" type="button" style="margin-left: 10px">
+                                <i class="fa fa-search"></i>
+                            </button>
+                          </span>
+					</div><!-- /input-group -->
+				</div><!-- end of search widget-->
+
+				<div class="card search-widget">
+					<div class="card-header text-center font-weight-bold">
+						Categories
+					</div>
+					<ul class="list-group list-group-flush">
+						@foreach($categories as $category)
+							<li class="list-group-item"><i class="fa fa-angle-right"></i> {{$category->name}}<span
+										class="badge-secondary badge-pill float-right">{{$category->posts->count()}}</span>
+							</li>
+						@endforeach
+					</ul>
+				</div><!-- end of card-->
+
+				<div class="card">
+					<div class="card-header text-center font-weight-bold">
+						Tags
+					</div>
+					<div class="card-body">
+						@foreach($tags as $tag)
+							<button type="button" class="btn btn-light" style="margin: 10px">
+								{{$tag->name}}
+							</button>
+						@endforeach
+					</div>
+				</div>
+			</aside><!-- end of aside-->
+		</div><!-- end of col-md-4-->
 	</div><!-- end of row-->
 @endsection

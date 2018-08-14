@@ -2,7 +2,9 @@
 
 	namespace App\Http\Controllers;
 
+	use App\Category;
 	use App\Post;
+	use App\Tag;
 	use Illuminate\Support\Facades\Mail;
 	use Illuminate\Support\Facades\Validator;
 	use Illuminate\Http\Request;
@@ -13,8 +15,10 @@
 
 		public function getIndex()
 		{
-			$posts = Post::orderBy('created_at', 'desc')->limit(4)->get();
-			return view('pages.welcome')->with('posts', $posts);
+			$tags = Tag::all();
+			$categories = Category::all();
+			$posts = Post::orderBy('created_at', 'desc')->get();
+			return view('pages.welcome')->with('posts', $posts)->with('categories', $categories)->with('tags', $tags);
 		}
 
 		/**
@@ -22,16 +26,8 @@
 		 */
 		public function getAbout()
 		{
-			$first = 'Bikky';
-			$second = 'Bhujel';
 
-			$fullname = $first . " " . $second;
-			$data = [];
-			$data['first'] = $first;
-			$data['second'] = $second;
-			$data['fullname'] = $fullname;
-			$data['email'] = 'bicky.bhujel@gmail.com';
-			return view('pages.about')->withData($data);
+			return view('pages.about');
 		}
 
 		public function getContact()
