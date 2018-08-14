@@ -246,5 +246,19 @@ li.comment-item {
     width: 100%;
 }
 
+.post-image{
+    margin-bottom: 15px;
+}
 
+.tocenter{
+    margin:0 auto;
+    display: inline;
+}
 
+/* --------------------------------------
+   widget
+   -------------------------------------- */
+
+.search-widget{
+    margin-bottom: 30px;
+}
