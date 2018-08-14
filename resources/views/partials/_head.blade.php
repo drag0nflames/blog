@@ -18,4 +18,5 @@
 
 
 	<title>Laravel Blog @yield('title')</title><!-- change this title for each page-->
+	<link rel="icon" href="{{asset('img/favicon.png')}}"/>
 </head>
