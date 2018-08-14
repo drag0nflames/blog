@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-	protected $fillable = ['title', 'body'];
+	protected $fillable = ['title', 'body','user_id'];
+
+	 //Telling post model to use categories table//
+	protected $table = "posts";
+
 
 	public function category(){
 		return $this->belongsTo('App\Category');
@@ -25,5 +29,9 @@ class Post extends Model
 	 */
 	public function comments(){
 		return $this->hasMany('App\Comment');
+	}
+
+	public function user(){
+		$this->belongsTo('App\User');
 	}
 }
